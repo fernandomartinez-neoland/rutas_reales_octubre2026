@@ -81,3 +81,43 @@ export async function userProfileModel(){
 export async function getUsersModel(){
     return user
 }
+
+
+// user.model.js
+
+const getAllUsersModel = () => {
+    // Simula un SELECT * FROM users
+    return [
+        { id: 1, nombre: "Carlos", activo: true },
+        { id: 2, nombre: "Laura", activo: false }
+    ];
+};
+
+const findUserByIdModel = (id) => {
+    // Simula un SELECT * FROM users WHERE id = ?
+    return { id: id, nombre: "Andrés", correo: "andres@ejemplo.com" };
+};
+
+const createNewUserModel = (userData) => {
+    // Simula un INSERT INTO users...
+    return { id: 3, ...userData, creadoEn: new Date().toISOString() };
+};
+
+const updateUserPasswordModel = (id, newPasswordHash) => {
+    // Simula un UPDATE users SET password = ? WHERE id = ?
+    return { mensaje: `Contraseña actualizada correctamente para el usuario ${id}`, exito: true };
+};
+
+const deleteUserModel = (id) => {
+    // Simula un DELETE FROM users WHERE id = ? (o borrado lógico)
+    return { exito: true, registrosAfectados: 1 };
+};
+
+// Exportamos las funciones para que el Service las pueda utilizar
+module.exports = {
+    getAllUsersModel,
+    findUserByIdModel,
+    createNewUserModel,
+    updateUserPasswordModel,
+    deleteUserModel
+};
